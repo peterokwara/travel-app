@@ -1,4 +1,13 @@
+const { initServices } = require("./initServices");
+const dotenv = require("dotenv").config();
 const express = require("express");
+
+// Set up the configuration
+const config = {
+  geonames_username: process.env.GEONAMES_USERNAME,
+  pixabay_api_key: process.env.PIXABAY_API_KEY,
+  weatherbit_api_key: process.env.WEATHERBIT_API_KEY,
+};
 
 const app = express();
 
@@ -18,6 +27,9 @@ console.log(__dirname);
 app.get("/", function (req, res) {
   res.sendFile("dist/index.html");
 });
+
+// Initialize all the services
+initServices(config);
 
 const port = process.env.PORT || 3000;
 

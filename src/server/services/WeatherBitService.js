@@ -12,7 +12,7 @@ class WeatherBitService {
    * @param config The configuration with api key for the WeatherBit Service
    */
   constructor(config) {
-    this.api_key = config.api_key;
+    this.api_key = config.weatherbit_api_key;
   }
 
   /**

@@ -12,7 +12,7 @@ class PixabayService {
    * @param config The configuration with the api key for the Pixabay Service
    */
   constructor(config) {
-    this.api_key = config.api_key;
+    this.api_key = config.pixabay_api_key;
   }
 
   /**
