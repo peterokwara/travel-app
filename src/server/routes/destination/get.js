@@ -1,16 +1,18 @@
-// const MeaningCloudService = require("../../services/MeaningCloudService");
-// const dotenv = require("dotenv").config();
+// const DestinationsService = require("../../services/DestinationsService");
+const ServiceFactory = require("../../factory/ServiceFactory");
 
-// async function get(request) {
-//   const config = {
-//     license_key: process.env.LICENSE_KEY,
-//     language: process.env.LANGUAGE,
-//     api: process.env.API,
-//   };
-//   const meaningCloudService = new MeaningCloudService(config);
-//   const response = await meaningCloudService.sendRequest(request);
+/**
+ * Get destinations
+ * @param  request the request
+ * @returns the response
+ */
+async function get(request) {
+  // Check to see if the response is there
+  // const destinationsService = new DestinationsService();
+  // const response = await destinationsService.fetchDestinationInfo("ke");
+  const destinationsService = ServiceFactory.get("destinations");
+  const response = await destinationsService.fetchDestinationInfo("ke");
+  return response;
+}
 
-//   return response;
-// }
-
-// module.exports = { get };
+module.exports = { get };

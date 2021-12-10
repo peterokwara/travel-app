@@ -1,3 +1,5 @@
+const axios = require("axios");
+
 /**
  * Function to send a request and handle errors
  * @param verb The HTTP verb to make the request
@@ -6,13 +8,12 @@
  * @param headers The headers of the request
  * @returns The response from the request
  */
-const sendRequest = async (verb, path, request = {}, headers = {}) => {
+const sendRequest = async (verb, path, headers = {}) => {
   let fetchResponse;
   try {
-    fetchResponse = await fetch(path, {
+    fetchResponse = await axios(path, {
       method: verb,
       headers,
-      body: JSON.stringify(request),
     });
 
     if (!fetchResponse) {
@@ -21,6 +22,7 @@ const sendRequest = async (verb, path, request = {}, headers = {}) => {
   } catch (error) {
     throw new Error("The application is not able to complete the request");
   }
+  return fetchResponse.data;
 };
 
 module.exports = { sendRequest };

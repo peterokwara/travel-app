@@ -10,7 +10,7 @@ class GeoNamesService {
    * @param config The configuration with the username for the GeoNames Service
    */
   constructor(config) {
-    this.username = config.username;
+    this.username = config.geonames_username;
   }
 
   /**
@@ -18,9 +18,9 @@ class GeoNamesService {
    * @param country The name of the country
    * @returns information about the country
    */
-  async fetchCountryInfo(country) {
+  async fetchCountryInfo(country = "us") {
     const verb = "get";
-    const path = `${this.baseUrl}/countryInfo?username=${this.username}&country=${country}`;
+    const path = `${this.baseUrl}/countryInfoJSON?username=${this.username}&country=${country}`;
 
     // Send the request
     const countryInfo = await apiHelper.sendRequest(verb, path);

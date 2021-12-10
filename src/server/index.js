@@ -1,6 +1,7 @@
-const { initServices } = require("./initServices");
-const dotenv = require("dotenv").config();
+const getDestinations = require("./routes/destination/get");
 const express = require("express");
+const init = require("./initServices");
+const dotenv = require("dotenv").config();
 
 // Set up the configuration
 const config = {
@@ -28,8 +29,14 @@ app.get("/", function (req, res) {
   res.sendFile("dist/index.html");
 });
 
+// Fetch destinations
+app.post("/destinations", async function (request, response) {
+  const destinations = await getDestinations.get(request.body);
+  response.send(destinations);
+});
+
 // Initialize all the services
-initServices(config);
+init.initServices(config);
 
 const port = process.env.PORT || 3000;
 
