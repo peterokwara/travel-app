@@ -1,4 +1,3 @@
-// const DestinationsService = require("../../services/DestinationsService");
 const ServiceFactory = require("../../factory/ServiceFactory");
 
 /**
@@ -7,11 +6,15 @@ const ServiceFactory = require("../../factory/ServiceFactory");
  * @returns the response
  */
 async function get(request) {
-  // Check to see if the response is there
-  // const destinationsService = new DestinationsService();
-  // const response = await destinationsService.fetchDestinationInfo("ke");
+  // Fetch the destinations service
   const destinationsService = ServiceFactory.get("destinations");
-  const response = await destinationsService.fetchDestinationInfo("ke");
+
+  if (!request.city) {
+    throw new Error("There is no city name in the request");
+  }
+
+  // Get information about the destination
+  const response = await destinationsService.fetchDestinationInfo(request.city);
   return response;
 }
 

@@ -1,7 +1,4 @@
 const ServiceFactory = require("../factory/ServiceFactory");
-const GeoNamesService = require("../services/GeoNamesService");
-const PixabayService = require("../services/PixabayService");
-const WeatherBitService = require("../services/WeatherBitService");
 const dotenv = require("dotenv").config();
 
 // Set up the configuration
@@ -16,31 +13,60 @@ const config = {
  */
 class DestinationsService {
   /**
-   * Function to get information about a given country
-   * @param country The name of the country
-   * @returns information about the country
+   * Function to get information about a given city
+   * @param city The name of the city
+   * @returns information about the city
    */
-  async fetchDestinationInfo(destination) {
+  async fetchDestinationInfo(city) {
+    // Fetch information about the city
     const geoNamesService = ServiceFactory.get("geonames");
-    const locationInfo = await geoNamesService.fetchCountryInfo("ke");
-    console.log(locationInfo);
+    const locationInfo = await geoNamesService.fetchCountryInfo(city);
 
-    const pixaBayService = ServiceFactory.get("pixabay");
-    const imageLinks = await pixaBayService.fetchImages("ke");
-    console.log(imageLinks);
+    if (!locationInfo) {
+      throw new Error(
+        "Unable to fetch location information from the geonames api."
+      );
+    }
 
+    // Fetch current weather
     const weatherBitService = ServiceFactory.get("weatherbit");
     const currentWeatherInfo = await weatherBitService.fetchCurrentWeather(
-      "nairobi",
-      "ke"
+      locationInfo.geonames[0].lng,
+      locationInfo.geonames[0].lat
     );
+
+    if (!currentWeatherInfo) {
+      throw new Error(
+        "Unable to fetch current weathers information from the weatherbit api."
+      );
+    }
+
+    // Fetch weather forecast
     const weatherForecastInfo = await weatherBitService.fetchForecast(
-      "nairobi",
-      "ke"
+      locationInfo.geonames[0].lng,
+      locationInfo.geonames[0].lat
     );
-    console.log(currentWeatherInfo);
-    console.log(weatherForecastInfo);
-    return "manamana";
+
+    if (!weatherForecastInfo) {
+      throw new Error(
+        "Unable to fetch the weather forecast from the weatherbit api."
+      );
+    }
+
+    // Fetch image from location
+    const pixaBayService = ServiceFactory.get("pixabay");
+    const imageLinks = await pixaBayService.fetchImages(city);
+
+    if (!imageLinks) {
+      throw new Error("Unable to fetch any images from the pixabay service.");
+    }
+
+    return {
+      location: locationInfo.geonames,
+      currentWeather: currentWeatherInfo,
+      weatherForecast: weatherForecastInfo,
+      images: imageLinks,
+    };
   }
 }
 

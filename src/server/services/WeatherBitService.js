@@ -21,9 +21,9 @@ class WeatherBitService {
    * @param city The city
    * @returns the current weather information
    */
-  async fetchCurrentWeather(city, country) {
+  async fetchCurrentWeather(longitude, latitude) {
     const verb = "get";
-    const path = `${this.baseUrl}/current?city=${city}&country=${country}&key=${this.api_key}`;
+    const path = `${this.baseUrl}/current?&lat=${latitude}&lon=${longitude}&key=${this.api_key}`;
     const headers = {
       "Content-Type": "application/json",
       "keep-alive": "timeout=5",
@@ -41,9 +41,9 @@ class WeatherBitService {
    * @param city The city
    * @returns the weather information for the next 16 days
    */
-  async fetchForecast(city, country) {
+  async fetchForecast(longitude, latitude) {
     const verb = "get";
-    const path = `${this.baseUrl}/forecast/daily?city=${city}&country=${country}&key=${this.api_key}`;
+    const path = `${this.baseUrl}/forecast/daily?&lat=${latitude}&lon=${longitude}&key=${this.api_key}`;
     const headers = {
       "Content-Type": "application/json",
       "keep-alive": "timeout=5",

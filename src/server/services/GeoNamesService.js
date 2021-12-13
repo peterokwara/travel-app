@@ -4,7 +4,9 @@ const apiHelper = require("../utils/apiHelper");
  * Class for the GeoNames Service
  */
 class GeoNamesService {
+  // Base url for the geonames api
   baseUrl = `http://api.geonames.org`;
+
   /**
    * Create a new instance of the GeoNames Service
    * @param config The configuration with the username for the GeoNames Service
@@ -18,14 +20,14 @@ class GeoNamesService {
    * @param country The name of the country
    * @returns information about the country
    */
-  async fetchCountryInfo(country = "us") {
+  async fetchCountryInfo(city) {
     const verb = "get";
-    const path = `${this.baseUrl}/countryInfoJSON?username=${this.username}&country=${country}`;
+    const path = `${this.baseUrl}/searchJSON?name=${city}&maxRows=1&username=${this.username}`;
 
     // Send the request
-    const countryInfo = await apiHelper.sendRequest(verb, path);
+    const cityInfo = await apiHelper.sendRequest(verb, path);
 
-    return countryInfo;
+    return cityInfo;
   }
 }
 
