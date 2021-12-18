@@ -18,6 +18,8 @@ class DestinationsService {
    * @returns information about the city
    */
   async fetchDestinationInfo(city) {
+    let imageLinks;
+
     // Fetch information about the city
     const geoNamesService = ServiceFactory.get("geonames");
     const locationInfo = await geoNamesService.fetchCountryInfo(city);
@@ -55,10 +57,13 @@ class DestinationsService {
 
     // Fetch image from location
     const pixaBayService = ServiceFactory.get("pixabay");
-    const imageLinks = await pixaBayService.fetchImages(city);
+    imageLinks = await pixaBayService.fetchImages(city);
 
-    if (!imageLinks) {
-      throw new Error("Unable to fetch any images from the pixabay service.");
+    // If no hit from location, get image from country
+    if (!imageLinks.total) {
+      imageLinks = await pixaBayService.fetchImages(
+        locationInfo.geonames[0].countryName
+      );
     }
 
     return {
