@@ -1,0 +1,38 @@
+form {
+  display: flex;
+  flex-direction: row;
+  margin: auto;
+  max-width: 300px;
+  input {
+    padding: 10px;
+    float: left;
+    width: 80%;
+  }
+  button {
+    float: left;
+    width: 20%;
+    border-left: none;
+    i.material-icons {
+      padding: 4px 4px;
+    }
+  }
+}
+
+form {
+  input {
+    font-size: 10px;
+    border: 1px solid grey;
+    background: #f1f1f1;
+  }
+  button {
+    background: #2196f3;
+    color: white;
+    border: 1px solid grey;
+    cursor: pointer;
+    display: inline-block;
+    text-align: center;
+    i.material-icons {
+      font-size: 18px;
+    }
+  }
+}

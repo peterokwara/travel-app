@@ -1,0 +1,52 @@
+@import "../variables.scss";
+
+// module
+.list-card {
+  display: flex;
+  flex-direction: row;
+  height: 100px;
+  align-items: center;
+  gap: 10px;
+
+  h4 {
+    margin: 10px 0px 10px 0px;
+  }
+
+  img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+  }
+
+  div {
+    div {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+    }
+  }
+
+  i {
+    color: gray;
+  }
+}
+
+// For tablets and laptops and desktops
+@media only screen and (min-width: 600px) {
+  .card {
+  }
+}
+
+// styles
+
+.list-card {
+  h4 {
+    font-family: $title-large;
+    font-size: $title-large-size;
+  }
+
+  p {
+    font-family: $title-small;
+    font-size: $title-small-size;
+  }
+}
