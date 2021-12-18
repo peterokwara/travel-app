@@ -20,7 +20,9 @@ const handleSearchBar = async (event) => {
   };
   results = await ApiClient.fetchDestination(city);
 
-  console.log(results);
+  // Update UI
+  const UpdateUIService = ServiceFactory.get("update-ui");
+  await UpdateUIService.updateSearchResults(results);
 };
 
 export { handleSearchBar };
