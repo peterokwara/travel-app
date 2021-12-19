@@ -1,40 +1,30 @@
 class UpdateUIService {
   async updateSearchResults(results) {
-    console.log(results);
+    // Create UI card
+    let card = document.createElement("div");
+    card.setAttribute("class", "list-class");
+    card.innerHTML = `
+      <div class="list-card" id="class">
+        <img
+          id="card-image"
+          src="${results.images.hits[0].previewURL}"
+          alt="Avatar"
+        />
+        <div>
+          <h4>${results.location[0].countryName}</h4>
+          <div>
+            <p>${results.location[0].name}</p>
+            <i class="material-icons">place</i>
+          </div>
+        </div>
+      </div>`;
+
+    // Add card to the main UI
+    let currentDiv = document.getElementsByClassName("main")[0];
+    currentDiv.appendChild(card);
   }
+
+  async createCard() {}
 }
 
 module.exports = UpdateUIService;
-
-// const handleSearchResults = async (results) => {};
-
-// // Create a list of saved desinations (with min info)
-
-// // Create a list of saved desinations (with max info)
-
-// // Create a list of destinations from search (with min info)
-// const createList = () => {
-//   for (const iterator of object) {
-//   }
-//   let list = document.createElement("div");
-//   list.setAttribute("class", "list-class");
-//   list.innerHTML = `
-//   <div class="list-card" id="class">
-//   <img
-//     id="card-image"
-//     src="${destination.image}"
-//     alt="Avatar"
-//   />
-//   <div>
-//     <h4>${destination.country}</h4>
-//     <div>
-//       <p>Architect & Engineer</p>
-//       <i class="material-icons">${destination.city}</i>
-//     </div>
-//   </div>
-// </div>`;
-// };
-
-// // Create a list of destinations from search (with max info)
-
-// export default handleSearchResults;
