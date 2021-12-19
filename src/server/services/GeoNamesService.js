@@ -16,15 +16,27 @@ class GeoNamesService {
   }
 
   /**
-   * Function to get information about a given country
-   * @param country The name of the country
-   * @returns information about the country
+   * Function to get information about a given city
+   * @param city The name of the city
+   * @returns information about the city
    */
-  async fetchCountryInfo(city) {
+  async fetchCityInfo(city) {
     const verb = "get";
     const path = `${this.baseUrl}/searchJSON?name=${city}&maxRows=1&username=${this.username}`;
 
     // Send the request
+    const cityInfo = await apiHelper.sendRequest(verb, path);
+
+    return cityInfo;
+  }
+  /**
+   * Function to fetch information about a city from wikipedia
+   * @param city The name of the city
+   * @returns information about the city from wikipedia
+   */
+  async fetchCityInfoWiki(city) {
+    const verb = "get";
+    const path = `${this.baseUrl}/wikipediaSearchJSON?q=${city}&maxRows=5&username=${this.username}`;
     const cityInfo = await apiHelper.sendRequest(verb, path);
 
     return cityInfo;

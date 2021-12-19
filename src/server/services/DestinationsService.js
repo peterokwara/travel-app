@@ -22,11 +22,19 @@ class DestinationsService {
 
     // Fetch information about the city
     const geoNamesService = ServiceFactory.get("geonames");
-    const locationInfo = await geoNamesService.fetchCountryInfo(city);
+    const locationInfo = await geoNamesService.fetchCityInfo(city);
 
     if (!locationInfo) {
       throw new Error(
         "Unable to fetch location information from the geonames api."
+      );
+    }
+
+    const locationInfoWiki = await geoNamesService.fetchCityInfoWiki(city);
+
+    if (!locationInfoWiki) {
+      throw new Error(
+        "Unable to fetch location information from the wiki from the geonames api."
       );
     }
 
@@ -68,6 +76,7 @@ class DestinationsService {
 
     return {
       location: locationInfo.geonames,
+      locationWiki: locationInfoWiki,
       currentWeather: currentWeatherInfo,
       weatherForecast: weatherForecastInfo,
       images: imageLinks,
