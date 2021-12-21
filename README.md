@@ -22,13 +22,9 @@
 
 Basic travel app.
 
-#### Hosted?
-
-The project is hosted on Heroku [here](https://salty-taiga-09643.herokuapp.com/ ). The project is deployed in development mode by setting
-
-```console
-heroku config:set NPM_CONFIG_PRODUCTION=false
-```
+<p align="center">
+  <img src="./assets/eFKKvWDwsj.gif"/>
+</p>
 
 ### Technical
 
@@ -40,7 +36,9 @@ This project uses: - HTML - CSS - SCSS - JS - NodeJS - Webpack - Babel
 
 A `.env` file needs to be created at the root of the project with the following text
 
-- **LICENSE_KEY=""** obtained from [meaning cloud](https://www.meaningcloud.com/)
+- **GEONAMES_USERNAME** obtained from [geonames](https://geonames.org/).
+- **PIXABAY_API_KEY** obtained from [pixabay](https://pixabay.com/).
+- **WEATHERBIT_API_KEY** obtained from [weatherbit](https://www.weatherbit.io/).
 
 The npm packages need to be installed by running
 
@@ -84,7 +82,7 @@ To run tests, you can simply run
 npm run test
 ```
 
-Once the project is running, the website can be accessed from `localhost:3000` by default.
+Once the project is running, the website (frontend) can be accessed from `localhost:8080` by default. The api can be accessed from `localhost:3000`
 
 #### CONTRIBUTING
 
