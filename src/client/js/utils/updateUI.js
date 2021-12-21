@@ -126,31 +126,19 @@ class UpdateUI {
       }
     };
 
-    // Get the close button for the card
-    const closeButton = document.getElementsByClassName("close")[0];
-    console.log(closeButton);
-    closeButton.onclick = function () {
+    // Get the close button for the card which resides at the top of the card
+    const topCloseButton = document.getElementsByClassName("close")[0];
+    topCloseButton.onclick = function () {
       card.remove();
     };
 
-    // span.onclick = function () {
-    //   modal.style.display = "none";
-    // };
+    // Get the close button for the card which resides at the bottom of the card
+    const bottomCloseButton =
+      document.getElementsByClassName("close-button")[0];
+    bottomCloseButton.onclick = function () {
+      card.remove();
+    };
   }
-
-  // /**
-  //  * Function to render saved locations
-  //  * @param results The results from an api request or local storage data
-  //  * @returns The results on the page
-  //  */
-  // async loadResults(results) {
-  //   this.results = results;
-  //   let savedLocationsTitle = document.createElement("div");
-  //   savedLocationsTitle.setAttribute("class", "saved-locations");
-  //   savedLocationsTitle.innerHTML = `
-  //     <h3>Saved Locations</h3>
-  //     `;
-  // }
 
   /**
    * Function to render a list card with information about a destination
@@ -219,8 +207,8 @@ class UpdateUI {
         <h3>Forecast</h3>
       </div>
       <div class="card-buttons">
-        <button class="button"><span>Close</span></button>
-        <button class="button"><span>Save</span></button>
+        <button class="button close-button"><span>Close</span></button>
+        <button class="button save-button"><span>Save</span></button>
       </div>
     </div>`;
 

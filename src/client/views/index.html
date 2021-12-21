@@ -1,121 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Travel App</title>
-  </head>
-  <body>
-    <!-- Header -->
-    <header><h1>Travel App</h1></header>
 
-    <main class="main">
-      
-      <!-- Search group -->
-      <div class="search-group">
-        
-        <!-- Search bar -->
-        <form class="search" onsubmit="return Client.handleSearchBar(event)">
-          <div class="search-group">
-            <input class="search-text-bar" type="text" required />
-            <span class="highlight"></span>
-            <span class="bar"></span>
-            <label>Destination</label>
-          </div>
-        </form>
-        
-        <!-- Search button -->
-        <button class="button" onclick="return Client.handleSearchBar(event)"><span>Search</span></button>
-        
-        <!-- <div class="results">
-          <h3>Results</h3>
-        </div>
-        <div class="saved-locations">
-          <h3>Saved Locations</h3>
-        </div>
-      </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Travel App</title>
+</head>
 
-      <div class="list-card" id="class">
-        <img
-          id="card-image"
-          src="https://cdn.pixabay.com/photo/2019/10/14/22/58/ukraine-4550155_150.jpg"
-          alt="Avatar"
-        />
-        <div class="card-country-name">
-          <h4>Kenya</h4>
-          <div class="card-location-name">
-            <p>Nairobi</p>
-            <i class="material-icons">place</i>
-          </div>
-        </div>
-      </div> -->
+<body>
+  <!-- Header -->
+  <header>
+    <h1>Travel App</h1>
+  </header>
 
-      <!-- <label for="">bananaa</label>
-      <i class="material-icons">search</i>
+  <main class="main">
+
+    <!-- Search group -->
+    <div class="search-group">
+
+      <!-- Search bar -->
       <form class="search" onsubmit="return Client.handleSearchBar(event)">
         <div class="search-group">
-          <input type="text" requred />
+          <input class="search-text-bar" type="text" required />
           <span class="highlight"></span>
           <span class="bar"></span>
-          <label>Search</label>
+          <label>Destination</label>
         </div>
       </form>
-      <button class="button"><span>Button</span></button>
-      <div class="location-card">
-        <img
-          src="https://qph.fs.quoracdn.net/main-qimg-c08da7ea4d2efba1c37a1ce082ee4967-lq"
-          alt="John"
-          style="width: 100%"
-        />
-        <h1>Nairobi</h1>
-        <h2 class="title">Kenya</h2>
-        <p>
-          To see a World in a Grain of Sand And a Heaven in a Wild Flower Hold
-          Infinity in the palm of your hand And Eternity in an hour
-        </p>
-        <div class="card-buttons">
-          <button class="button"><span>More Info</span></button>
-          <button class="button"><span>Save</span></button>
-        </div>
-        <div class="current-weather">
-          <h3 class="title">Current weather</h3>
-          <div class="current-weather-info">
-            <div>
-              <p class="current-weather-temperature">21</p>
-              <p class="current-weather-description">Cloudy</p>
-            </div>
-            <img src="https://www.weatherbit.io/static/img/icons/r01d.png" />
-          </div>
-        </div>
-        <div class="forecast">
-          <h3>Forecast</h3>
-          <div class="forecast-info">
-            <div>
-              <p>Tuesday</p>
-              <p>21</p>
-            </div>
-              <img src="https://www.weatherbit.io/static/img/icons/r01d.png" />
-          </div>
-        </div>
-        <div class="card-buttons">
-          <button class="button"><span>More Info</span></button>
-          <button class="button"><span>Save</span></button>
-        </div>
-      </div> -->
-    </main>
 
-    <!-- Footer -->
-    <footer><p>Travel App is a a trademark by Travel App LLC</p></footer>
+      <!-- Search button -->
+      <button class="button" onclick="return Client.handleSearchBar(event)"><span>Search</span></button>
 
-    <script>
-      // Check that service workers are supported
-      if ("serviceWorker" in navigator) {
-        // Use the window load event to keep the page load performant
-        window.addEventListener("load", () => {
-          navigator.serviceWorker.register("/service-worker.js");
-        });
-      }
-    </script>
-  </body>
+      <!-- Loader -->
+      <div class="loader"></div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>Travel App is a a trademark by Travel App LLC</p>
+  </footer>
+
+  <script>
+    // Check that service workers are supported
+    if ("serviceWorker" in navigator) {
+      // Use the window load event to keep the page load performant
+      window.addEventListener("load", () => {
+        navigator.serviceWorker.register("/service-worker.js");
+      });
+    }
+  </script>
+</body>
+
 </html>

@@ -5,6 +5,9 @@ import ServiceFactory from "../factory/ServiceFactory";
  * @param event The event to handle
  */
 const handleSearchBar = async (event) => {
+  // Get the loader
+  const loader = document.getElementsByClassName("loader")[0];
+
   event.preventDefault();
 
   let results;
@@ -12,6 +15,9 @@ const handleSearchBar = async (event) => {
   // Get the search bar
   const searchBar = document.getElementsByClassName("search-text-bar")[0];
   const searchTerm = searchBar.value;
+
+  // Activate loader
+  loader.style.display = "block";
 
   // Fetch information about the destination from the backend api
   const ApiClient = ServiceFactory.get("api-client");
@@ -23,6 +29,9 @@ const handleSearchBar = async (event) => {
   // Update UI
   const UpdateUI = ServiceFactory.get("update-ui");
   await UpdateUI.loadResults(results);
+
+  // Deactivate loader
+  loader.style.display = "none";
 };
 
 export { handleSearchBar };
