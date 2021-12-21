@@ -22,6 +22,11 @@
 
 Basic travel app.
 
+Uses object oriented programming mostly. With the factory pattern. Some advantages:
+
+- Don't have to pass configs every time someone wants to create a class.
+- Avoids fixed implementation when using classes only. A given class can behave different based on what is passed into it.
+
 <p align="center">
   <img src="./assets/eFKKvWDwsj.gif"/>
 </p>
