@@ -1,0 +1,33 @@
+/// Layout
+.list-card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    padding: 10px;
+  }
+  .card-country-name {
+    h4 {
+      margin-bottom: 5px;
+    }
+    .card-location-name {
+      display: flex;
+      align-items: center;
+      align-items: space-between;
+    }
+  }
+}
+
+/// Themes
+.list-card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  .card-country-name {
+    font-family: $font-secondary;
+    .card-location-name {
+      font-family: $font-secondary;
+    }
+  }
+}

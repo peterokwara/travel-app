@@ -1,6 +1,7 @@
 @import "./components/card.scss";
 @import "./components/searchBar.scss";
 @import "./components/button.scss";
+@import "./components/listCard.scss";
 @import "./variables.scss";
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 
@@ -55,4 +56,8 @@ body {
 h1 {
   font-family: $font-primary;
   font-size: 50px;
+}
+
+h3 {
+  font-family: $font-secondary;
 }
