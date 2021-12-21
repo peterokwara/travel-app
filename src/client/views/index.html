@@ -11,20 +11,45 @@
     <header><h1>Travel App</h1></header>
 
     <main class="main">
+      
       <!-- Search group -->
       <div class="search-group">
+        
         <!-- Search bar -->
         <form class="search" onsubmit="return Client.handleSearchBar(event)">
           <div class="search-group">
-            <input type="text" requred />
+            <input class="search-text-bar" type="text" required />
             <span class="highlight"></span>
             <span class="bar"></span>
             <label>Destination</label>
           </div>
         </form>
+        
         <!-- Search button -->
-        <button class="button"><span>Search</span></button>
+        <button class="button" onclick="return Client.handleSearchBar(event)"><span>Search</span></button>
+        
+        <!-- <div class="results">
+          <h3>Results</h3>
+        </div>
+        <div class="saved-locations">
+          <h3>Saved Locations</h3>
+        </div>
       </div>
+
+      <div class="list-card" id="class">
+        <img
+          id="card-image"
+          src="https://cdn.pixabay.com/photo/2019/10/14/22/58/ukraine-4550155_150.jpg"
+          alt="Avatar"
+        />
+        <div class="card-country-name">
+          <h4>Kenya</h4>
+          <div class="card-location-name">
+            <p>Nairobi</p>
+            <i class="material-icons">place</i>
+          </div>
+        </div>
+      </div> -->
 
       <!-- <label for="">bananaa</label>
       <i class="material-icons">search</i>

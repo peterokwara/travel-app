@@ -10,7 +10,7 @@ const handleSearchBar = async (event) => {
   let results;
 
   // Get the search bar
-  const searchBar = document.getElementsByClassName("search-input")[0];
+  const searchBar = document.getElementsByClassName("search-text-bar")[0];
   const searchTerm = searchBar.value;
 
   // Fetch information about the destination from the backend api
@@ -21,8 +21,8 @@ const handleSearchBar = async (event) => {
   results = await ApiClient.fetchDestination(city);
 
   // Update UI
-  const UpdateUIService = ServiceFactory.get("update-ui");
-  await UpdateUIService.updateSearchResults(results);
+  const UpdateUI = ServiceFactory.get("update-ui");
+  await UpdateUI.loadResults(results);
 };
 
 export { handleSearchBar };
