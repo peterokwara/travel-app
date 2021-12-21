@@ -7,27 +7,82 @@
     <title>Travel App</title>
   </head>
   <body>
-    <header></header>
+    <!-- Header -->
+    <header><h1>Travel App</h1></header>
+
     <main class="main">
-      <div class="search-bar">
-        <form onsubmit="return Client.handleSearchBar(event)">
-          <input
-            class="search-input"
-            type="text"
-            placeholder="Search..."
-            name="search"
-          />
-          <button
-            type="submit"
-            onclick="return Client.handleSearchBar(event)"
-            onsubmit="return Client.handleSearchBar(event)"
-          >
-            <i class="material-icons">search</i>
-          </button>
+      <!-- Search group -->
+      <div class="search-group">
+        <!-- Search bar -->
+        <form class="search" onsubmit="return Client.handleSearchBar(event)">
+          <div class="search-group">
+            <input type="text" requred />
+            <span class="highlight"></span>
+            <span class="bar"></span>
+            <label>Destination</label>
+          </div>
         </form>
+        <!-- Search button -->
+        <button class="button"><span>Search</span></button>
       </div>
+
+      <!-- <label for="">bananaa</label>
+      <i class="material-icons">search</i>
+      <form class="search" onsubmit="return Client.handleSearchBar(event)">
+        <div class="search-group">
+          <input type="text" requred />
+          <span class="highlight"></span>
+          <span class="bar"></span>
+          <label>Search</label>
+        </div>
+      </form>
+      <button class="button"><span>Button</span></button>
+      <div class="location-card">
+        <img
+          src="https://qph.fs.quoracdn.net/main-qimg-c08da7ea4d2efba1c37a1ce082ee4967-lq"
+          alt="John"
+          style="width: 100%"
+        />
+        <h1>Nairobi</h1>
+        <h2 class="title">Kenya</h2>
+        <p>
+          To see a World in a Grain of Sand And a Heaven in a Wild Flower Hold
+          Infinity in the palm of your hand And Eternity in an hour
+        </p>
+        <div class="card-buttons">
+          <button class="button"><span>More Info</span></button>
+          <button class="button"><span>Save</span></button>
+        </div>
+        <div class="current-weather">
+          <h3 class="title">Current weather</h3>
+          <div class="current-weather-info">
+            <div>
+              <p class="current-weather-temperature">21</p>
+              <p class="current-weather-description">Cloudy</p>
+            </div>
+            <img src="https://www.weatherbit.io/static/img/icons/r01d.png" />
+          </div>
+        </div>
+        <div class="forecast">
+          <h3>Forecast</h3>
+          <div class="forecast-info">
+            <div>
+              <p>Tuesday</p>
+              <p>21</p>
+            </div>
+              <img src="https://www.weatherbit.io/static/img/icons/r01d.png" />
+          </div>
+        </div>
+        <div class="card-buttons">
+          <button class="button"><span>More Info</span></button>
+          <button class="button"><span>Save</span></button>
+        </div>
+      </div> -->
     </main>
-    <footer></footer>
+
+    <!-- Footer -->
+    <footer><p>Travel App is a a trademark by Travel App LLC</p></footer>
+
     <script>
       // Check that service workers are supported
       if ("serviceWorker" in navigator) {

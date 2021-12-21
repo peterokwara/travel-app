@@ -1,52 +1,67 @@
 @import "../variables.scss";
 
-// module
-.list-card {
+// Layout
+.location-card {
   display: flex;
-  flex-direction: row;
-  height: 100px;
-  align-items: center;
-  gap: 10px;
-
-  h4 {
-    margin: 10px 0px 10px 0px;
+  flex-direction: column;
+  .card-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
   }
-
-  img {
-    width: 80px;
-    height: 80px;
-    object-fit: cover;
+  h1,
+  h2,
+  p,
+  h3 {
+    margin: 10px;
   }
-
-  div {
-    div {
+  .button {
+    display: inline-block;
+    right: 0;
+    margin: 8px;
+  }
+  .current-weather {
+    display: flex;
+    flex-direction: column;
+  }
+  .current-weather-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+  .forecast {
+    .forecast-info {
       display: flex;
       flex-direction: row;
-      align-items: center;
+      justify-content: space-between;
+      img {
+        width: auto;
+        height: 60px;
+        right: 0px;
+      }
     }
   }
-
-  i {
-    color: gray;
-  }
 }
 
-// For tablets and laptops and desktops
-@media only screen and (min-width: 600px) {
-  .card {
+// Themes
+.location-card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  p,
+  h3,
+  h2 {
+    font-family: $font-secondary;
   }
-}
-
-// styles
-
-.list-card {
-  h4 {
-    font-family: $title-large;
-    font-size: $title-large-size;
+  h1 {
+    font-family: $font-primary;
+    font-size: 50px;
   }
-
-  p {
-    font-family: $title-small;
-    font-size: $title-small-size;
+  .current-weather-info {
+    div .current-weather-temperature {
+      font-size: 50px;
+      font-weight: 500;
+    }
+    div .current-weather-description {
+      font-size: 20px;
+    }
   }
 }

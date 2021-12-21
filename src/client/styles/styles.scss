@@ -1,4 +1,58 @@
 @import "./components/card.scss";
 @import "./components/searchBar.scss";
+@import "./components/button.scss";
 @import "./variables.scss";
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+
+/// Base rules
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/// Layout rules
+
+body {
+  display: grid;
+  grid-template-rows: 80px 1fr 80px;
+  grid-template-areas:
+    "h"
+    "c"
+    "f";
+
+  header {
+    grid-area: h;
+    display: flex;
+    justify-content: center;
+  }
+  main {
+    grid-area: c;
+    display: flex;
+    margin: 20px;
+    justify-content: center;
+    flex-direction: column;
+    .search-group {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+  footer {
+    grid-area: f;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+/// Theme
+body {
+  background-color: #fffbfe;
+}
+
+h1 {
+  font-family: $font-primary;
+  font-size: 50px;
+}

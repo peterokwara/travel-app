@@ -1,7 +1,7 @@
 const ServiceFactory = require("./factory/ServiceFactory");
 const ApiClient = require("./services/apiClient");
 const BrowserStorageService = require("./services/BrowserStorageService");
-const UpdateUIService = require("./services/UpdateUIService");
+const UpdateUI = require("./utils/updateUI");
 
 /**
  * Initialize all the services
@@ -14,7 +14,7 @@ initServices = async () => {
   ServiceFactory.register("browser-storage", () => new BrowserStorageService());
 
   // Register the Update UI Service
-  ServiceFactory.register("update-ui", () => new UpdateUIService());
+  ServiceFactory.register("update-ui", () => new UpdateUI());
 };
 
 module.exports = { initServices };
