@@ -1,14 +1,14 @@
 import ServiceFactory from "../factory/ServiceFactory";
 
 /**
- * Handle submit events on the search bar
+ * Handle submit events on the search bar, when someone clicks search on the search bar
  * @param event The event to handle
  */
 const handleSearchBar = async (event) => {
+  event.preventDefault();
+
   // Get the loader
   const loader = document.getElementsByClassName("loader")[0];
-
-  event.preventDefault();
 
   let results;
 

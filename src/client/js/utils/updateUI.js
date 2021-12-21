@@ -1,3 +1,6 @@
+/**
+ * Class to handle all user interface functions
+ */
 class UpdateUI {
   results;
   /**
@@ -5,8 +8,10 @@ class UpdateUI {
    * @param results The search results from calling the backend api
    */
   async updateSearchResults(results) {
+    // Store results in a global variable
     this.results = results;
-    // Create UI card
+
+    // Create UI card to display results
     let card = document.createElement("div");
     card.setAttribute("class", "list-class");
     card.innerHTML = `
@@ -25,40 +30,11 @@ class UpdateUI {
         </div>
       </div>`;
 
-    // Add event click listener to the card
+    // Add event click listener to the card, to load more info about the result
     card.addEventListener("click", this.loadInfo);
 
     // Add card to the main UI
     let currentDiv = document.getElementsByClassName("search-group")[0];
-    currentDiv.appendChild(card);
-  }
-
-  /**
-   * Function to load saved destinations from local storage and populate it in the UI
-   */
-  async loadSavedDestinations() {}
-
-  /**
-   * Function to load more information about the destination from search results
-   */
-  async loadInfo(results) {
-    // Create UI card with more info
-    let card = document.createElement("div");
-    card.setAttribute("class", "list-class");
-    card.innerHTML = `
-    <div class="card">
-      <img src="https://cdn.pixabay.com/photo/2021/03/03/14/55/rhino-6065480_150.jpg" alt="Avatar" style="width:100%">
-      <div class="container">
-        <h4><b>John Doe</b></h4>
-        <p>Architect & Engineer</p>
-      </div>
-    </div>`;
-
-    // Add event click listener to the card
-    card.addEventListener("click", this.loadInfo);
-
-    // Add card to the main UI
-    let currentDiv = document.getElementsByClassName("main")[0];
     currentDiv.appendChild(card);
   }
 
@@ -80,7 +56,7 @@ class UpdateUI {
       clearResults.remove();
     }
 
-    // Create a title
+    // Create a title called results
     let resultsTitle = document.createElement("div");
     resultsTitle.setAttribute("class", "results");
     resultsTitle.innerHTML = `          
@@ -100,17 +76,18 @@ class UpdateUI {
   }
 
   /**
-   * Function to load a modal containing detailed information about a destination
-   * @param results The results from an api request or local storage data
+   * Function to load a card containing detailed information about a destination
    * @returns a detailed card with information about the destination
    */
   async loadDetailedResults() {
+    // Create the card with base information
     const card = await this.createCard();
 
-    // Render card
+    // Render card before rendering the respective forecasts
     let currentDiv = document.getElementsByClassName("main")[0];
     currentDiv.append(card);
 
+    // Create a list of 16 forecasts
     const forecastContents = await this.createForecastList();
 
     // Render all 16 forecasts
@@ -119,20 +96,20 @@ class UpdateUI {
       currentDiv.append(forecastContent);
     }
 
-    // When the user clicks anywhere outside of the modal, close it
+    // When the user clicks anywhere outside of the card, close it
     window.onclick = function (event) {
       if (event.target == card) {
         card.remove();
       }
     };
 
-    // Get the close button for the card which resides at the top of the card
+    // When the user clicks on the top close button, close it
     const topCloseButton = document.getElementsByClassName("close")[0];
     topCloseButton.onclick = function () {
       card.remove();
     };
 
-    // Get the close button for the card which resides at the bottom of the card
+    // When the user clicks on the bottom close button, close it
     const bottomCloseButton =
       document.getElementsByClassName("close-button")[0];
     bottomCloseButton.onclick = function () {
@@ -141,13 +118,16 @@ class UpdateUI {
   }
 
   /**
-   * Function to render a list card with information about a destination
+   * Function to render a list card with basic information about a destination
    * @param results The results from an api request or local storage data
    * @returns the list element
    */
   async createList(results) {
+    // Create the list element
     let list = document.createElement("div");
     list.setAttribute("class", "list-item");
+
+    // Start populating the html with content from the backend api request
     list.innerHTML = `
     <div class="list-card" id="class">
         <img
@@ -164,22 +144,26 @@ class UpdateUI {
         </div>
     </div>
     `;
+
+    // Add event listener if the user clicks on the list element, run the function to display the very detailed card
     list.addEventListener("click", () => {
       this.loadDetailedResults();
     });
+
+    // Return the populated list item
     return list;
   }
 
   /**
-   * Function to render a card with all the information about a location
-   * @param results The results from an api request or local storage data
-   * @returns a card element
+   * Function to render a card with all detailed information about a location
+   * @returns a detailed card element without forecast info
    */
   async createCard() {
-    let test = await this.createForecastList();
-
+    // Create a div for the card
     let card = document.createElement("div");
     card.setAttribute("class", "card-item");
+
+    // Start populating the card with results from the backend api
     card.innerHTML = `
     <div class="location-card">
       <span class="close">&times;</span>
@@ -212,12 +196,22 @@ class UpdateUI {
       </div>
     </div>`;
 
+    // Return a populated card
     return card;
   }
 
+  /**
+   * Function to render the 16 day forecast
+   * @returns an array of div elements, each having forecasts and totaling up to 16
+   */
   async createForecastList() {
+    // Create an empty array to store the forecast divs
     const forecastDivs = [];
+
+    // Get the array of the forecast results we will loop through
     const forecasts = this.results.weatherForecast.data;
+
+    // Start populating each div respectively
     for (const forecast of forecasts) {
       // Get the day of the week for the date of forecast
       const date = new Date(forecast.datetime);
@@ -225,8 +219,11 @@ class UpdateUI {
         weekday: "long",
       });
 
+      // Create a div for each forecast item
       const div = document.createElement("div");
       div.setAttribute("class", "forecast-item");
+
+      // Populate the div
       div.innerHTML = `
         <div class="forecast-info">
           <p>${forecastDate}</p>
@@ -235,9 +232,11 @@ class UpdateUI {
         </div>
         <img src="https://www.weatherbit.io/static/img/icons/${forecast.weather.icon}.png" />`;
 
+      // Add the created div into an array
       forecastDivs.push(div);
     }
 
+    // Return an array of forecast divs
     return forecastDivs;
   }
 }
