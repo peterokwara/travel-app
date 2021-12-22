@@ -4,7 +4,6 @@ const axios = require("axios");
  * Function to send a request and handle errors
  * @param verb The HTTP verb to make the request
  * @param path The path to send the request to
- * @param request The request to send
  * @param headers The headers of the request
  * @returns The response from the request
  */
