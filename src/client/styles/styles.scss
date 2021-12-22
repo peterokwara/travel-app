@@ -20,10 +20,11 @@ body {
 body {
   display: grid;
   grid-template-rows: 80px 1fr 80px;
+  grid-template-columns: repeat(3, 1fr);
   grid-template-areas:
-    "h"
-    "c"
-    "f";
+    ". h ."
+    ". c ."
+    ". f .";
 
   header {
     grid-area: h;
