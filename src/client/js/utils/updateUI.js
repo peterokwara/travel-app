@@ -192,7 +192,6 @@ class UpdateUI {
       </div>
       <div class="card-buttons">
         <button class="button close-button"><span>Close</span></button>
-        <button class="button save-button"><span>Save</span></button>
       </div>
     </div>`;
 
